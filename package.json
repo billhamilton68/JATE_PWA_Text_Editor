@@ -4,12 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "",
-    "start": "",
-    "server": "",
-    "build": "",
-    "install": "",
-    "client": ""
+  "start:dev": "concurrently \"npm run server\" \"npm run client\"",
+  "start": "if-env NODE_ENV=production && npm run start:dev || npm run install && npm run start:dev",
+  "server": "nodemon server/server.js",
+  "build": "cd client && npm run build",
+  "install": "cd client && npm install",
+  "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
